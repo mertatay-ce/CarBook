@@ -19,4 +19,10 @@ public class CarRepository : ICarRepository
         var cars = await _context.Cars.Include(x => x.Brand).ToListAsync();
         return cars;
     }
+
+    public async Task<List<Car>> GetLast5CarsWithBrands()
+    {
+        var cars = await _context.Cars.Include(x => x.Brand).OrderByDescending(x => x.CarId).Take(5).ToListAsync();
+        return cars;
+    }
 }
