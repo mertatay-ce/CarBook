@@ -26,11 +26,11 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Pages\" />
+      <ProjectReference Include="..\CarBook.Dto\CarBook.Dto.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\CarBook.Dto\CarBook.Dto.csproj" />
+      <Folder Include="Pages\" />
     </ItemGroup>
 
 </Project>
