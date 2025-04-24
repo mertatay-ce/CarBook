@@ -21,4 +21,16 @@
       <Content Include="wwwroot\carbook-master\scss\bootstrap\.DS_Store" />
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="9.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Pages\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\CarBook.Dto\CarBook.Dto.csproj" />
+    </ItemGroup>
+
 </Project>

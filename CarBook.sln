@@ -18,6 +18,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Frontends", "Frontends", "{
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Carbook.WebUI", "Frontends\Carbook.WebUI\Carbook.WebUI.csproj", "{B2909BB1-35AF-46F5-8492-2593A2DF65BA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarBook.Dto", "Frontends\CarBook.Dto\CarBook.Dto.csproj", "{3ABA496C-EAAD-42BD-8807-8CC3E5B6F3FA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +31,7 @@ Global
 		{E434A780-6123-4D83-A538-3E31E25D6442} = {FFF1117A-334A-42BF-AE58-12D192711B5A}
 		{52042B72-9176-4D4C-A7D1-9DE51E91BE94} = {A5949E72-4F45-4F73-A939-F95260A8950E}
 		{B2909BB1-35AF-46F5-8492-2593A2DF65BA} = {456A1F10-93D2-430E-8D46-BC69B508F20C}
+		{3ABA496C-EAAD-42BD-8807-8CC3E5B6F3FA} = {456A1F10-93D2-430E-8D46-BC69B508F20C}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{0CB3E05F-1749-40D9-A02E-8C1A7258EFCC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -51,5 +54,9 @@ Global
 		{B2909BB1-35AF-46F5-8492-2593A2DF65BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B2909BB1-35AF-46F5-8492-2593A2DF65BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B2909BB1-35AF-46F5-8492-2593A2DF65BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3ABA496C-EAAD-42BD-8807-8CC3E5B6F3FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3ABA496C-EAAD-42BD-8807-8CC3E5B6F3FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3ABA496C-EAAD-42BD-8807-8CC3E5B6F3FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3ABA496C-EAAD-42BD-8807-8CC3E5B6F3FA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
