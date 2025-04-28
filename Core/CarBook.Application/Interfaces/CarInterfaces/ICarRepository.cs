@@ -6,4 +6,6 @@ public interface ICarRepository
 {
     public Task<List<Car>> GetCarsListWithBrands();
     public Task<List<Car>> GetLast5CarsWithBrands();
+    
+  
 }

@@ -7,6 +7,8 @@ namespace Carbook.WebUI.Controllers
         // GET: AboutController
         public ActionResult Index()
         {
+            ViewBag.subject1 = "Hakkımızda";
+            ViewBag.subject2 = "Vizyonumuz & Misyonumuz";
             return View();
         }
 
