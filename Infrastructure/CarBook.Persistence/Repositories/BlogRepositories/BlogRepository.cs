@@ -19,4 +19,10 @@ public class BlogRepository : IBlogRepository
         var values = await _context.Blogs.Include(x => x.Author).OrderByDescending(x=>x.BlogId).Take(3).ToListAsync();
         return values;
     }
+
+    public async Task<List<Blog>> GetAllBlogsWithAuthors()
+    {
+        var blogs = await _context.Blogs.Include(x => x.Author).ToListAsync();
+        return blogs;
+    }
 }
