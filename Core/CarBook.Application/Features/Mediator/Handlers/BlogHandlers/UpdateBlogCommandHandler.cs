@@ -23,6 +23,7 @@ public class UpdateBlogCommandHandler : IRequestHandler<UpdateBlogCommand>
         value.CreatedDate = request.CreatedDate;
         value.CategoryId = request.CategoryId;
         value.CoverImageUrl = request.CoverImageUrl;
+        value.Description = request.Description;
         await _repository.UpdateAsync(value);
     }
 }

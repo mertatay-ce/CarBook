@@ -1,0 +1,16 @@
+ @model CarBook.Dto.BlogDtos.ResultGetBlogByIdDto
+<div class="col-md-8 ftco-animate">
+            <h2 class="mb-3">@Model.title</h2>
+            <p>@Model.description</p>
+            @await Component.InvokeAsync("_BlogDetailTagCloudByBlogComponentPartial", new{id = Model.blogId})
+            @await Component.InvokeAsync("_BlogDetailAuthorAboutComponentPartial",new{id = Model.blogId})
+          
+
+
+            <div class="pt-5 mt-5">
+              <h3 class="mb-5">6 Comments</h3>
+              @await Component.InvokeAsync("_CommentListByBlogComponentPartial")
+              @await Component.InvokeAsync("_CommentFormByBlogComponentPartial")
+            </div>
+            </div> 
+

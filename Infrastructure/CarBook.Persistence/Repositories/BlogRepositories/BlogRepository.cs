@@ -25,4 +25,10 @@ public class BlogRepository : IBlogRepository
         var blogs = await _context.Blogs.Include(x => x.Author).ToListAsync();
         return blogs;
     }
+
+    public async Task<Blog> GetAuthorByBlogId(int id)
+    {
+        var blog = await _context.Blogs.Include(x => x.Author).Where(x => x.BlogId == id).FirstAsync();
+        return blog;
+    }
 }

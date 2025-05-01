@@ -10,4 +10,6 @@ public class ResultGetAllBlogsWithAuthorsDto
     public int categoryId { get; set; }
     public string authorName { get; set; }
     public string description { get; set; }
+    public string AuthorDescription { get; set; }
+    public string AuthorImageUrl { get; set; }
 }

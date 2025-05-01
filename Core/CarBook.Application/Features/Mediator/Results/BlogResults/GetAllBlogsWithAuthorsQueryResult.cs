@@ -11,4 +11,7 @@ public class GetAllBlogsWithAuthorsQueryResult
 
     public string AuthorName { get; set; }
     public string Description { get; set; }
+
+    public string AuthorDescription { get; set; }
+    public string AuthorImageUrl { get; set; }
 }

@@ -23,7 +23,7 @@ public class CreateBlogCommandHandler : IRequestHandler<CreateBlogCommand>
             CoverImageUrl = request.CoverImageUrl,
             Title = request.Title,
             CreatedDate = DateTime.Now,
-
+            Description = request.Description,
         });
     }
 }
