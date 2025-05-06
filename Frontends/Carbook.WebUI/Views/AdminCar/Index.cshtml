@@ -1,0 +1,83 @@
+@model List<CarBook.Dto.CarDtos.ResultCarWithBrandsDto>
+
+@{
+    ViewBag.Title = "title";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+
+<div class="page-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="page-title-box d-flex align-items-center justify-content-between">
+                    <h4 class="mb-0 font-size-18">Araba Yönetim Paneli</h4>
+
+                    <div class="page-title-right">
+                        <ol class="breadcrumb m-0">
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">Paneller</a></li>
+                            <li class="breadcrumb-item active">Araba Yönetim Paneli</li>
+                        </ol>
+                    </div>
+                                
+                </div>
+            </div>
+        </div>     
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Araba Listesi</h4>
+                        <p class="card-subtitle mb-4">
+                            Arabalarınızın yönetimi için araçların listelenmesi, araç eklennmesi, araçların silinmesi, araçların bilgilerinin aranması ve araçlarınızın bilgilerini güncelleme işlemlerini bu panel üzerinden gerçekleştirebilirsiniz.
+                        </p>
+                        <div class="table-responsive">
+                            <table class="table mb-0">
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Marka Adı</th>
+                                    <th>Modeli</th>
+                                    <th>Araç Kilometre (Km)</th>
+                                    <th>İşlemler</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    count++;
+                                    <tr>
+                                        <th scope="row">@count</th>
+                                        <td>@item.BrandName</td>
+                                        <td>@item.Model</td>
+                                        <td>@item.Mileage</td>
+                                        <td>
+                                            <a href="/AdminCar/RemoveCar/@item.CarId" class="btn btn-outline-danger me-5">Sil</a>
+                                            <a href="/AdminCar/UpdateCar/@item.CarId" class="btn btn-outline-warning me-5">Güncelle</a>
+                                            <a href="/AdminCar/CarDetail/@item.CarId" class="btn btn-outline-dark">Araç Detayı</a>
+                                            <a href="#" class="btn btn-outline-success">Sitede Gör</a>
+                                        </td>
+                                    </tr>
+                                }
+                               
+
+                                </tbody>
+                            </table>
+                            <a href="/AdminCar/CreateCar/" class="btn btn-outline-primary ">Yeni Araç Girişi</a>
+                        </div>
+
+                    </div>
+                    <!-- end card-body-->
+                </div>
+                <!-- end card -->
+
+            </div>
+
+
+
+
+
+        </div>
+
+    </div> <!-- container-fluid -->
+</div>
