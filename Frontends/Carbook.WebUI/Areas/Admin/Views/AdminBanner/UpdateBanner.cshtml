@@ -1,0 +1,74 @@
+@model CarBook.Dto.BannerDtos.UpdateBannerDto
+@{
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="page-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="page-title-box d-flex align-items-center justify-content-between">
+                    <h4 class="mb-0 font-size-18">Banner Güncelleme</h4>
+
+                    <div class="page-title-right">
+                        <ol class="breadcrumb m-0">
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">Paneller</a></li>
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">Ana Sayfa Banner Alanı Yönetim Paneli</a></li>
+                            <li class="breadcrumb-item active">Banner Güncelleme</li>
+                        </ol>
+                    </div>
+                                
+                </div>
+            </div>
+        </div>    
+        <div class="row">
+            <div class="col-xl-12">
+                 <div class="card">
+                     <div class="card-body">
+                    
+                                    <h4 class="card-title">Banner Düzenleme</h4>
+                                    <p class="card-subtitle mb-4">Varolan bir banner'ı güncellemek için aşağıdaki form üzerinden bilgileri girip <strong>"Banner'ı Kaydet"</strong> tuşuna basınız.</p>
+                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                        Banner girişi yapılırken mevcut tema bütünlüğünü korumak için, yeni oluşturacağınız banner bilgisini oluşturduktan sonra mevcuttaki banner bilgisini kaldırmanız gerekmektedir.
+                                        Aksi takdirde tema bütünlüğü bozulacaktır!
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                        Video URL girilirken mevcut formatın Youtube Embed URL formatında olması gerekmektedir!
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <form method="post">
+                                        <input type="hidden" asp-for="bannerId"/>
+                                        <div class="form-group">
+                                            <label for="Title">Başlık</label>
+                                            <input type="text" class="form-control" id="Title" asp-for="title" placeholder="Başlık adını giriniz...">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="Desc">Açıklama</label>
+                                            <input type="text" class="form-control" id="Desc" asp-for="description" placeholder="Açıklama giriniz...">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="VideoUrl">Video URL</label>
+                                            <input type="text" class="form-control" id="VideoUrl" asp-for="videoUrl" placeholder="Videonun Youtube Embed URL'ini giriniz...">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="VideoDesc">Video Açıklaması</label>
+                                            <input type="text" class="form-control" id="VideoDesc" asp-for="videoDescription" placeholder="Videonun açıklamasını giriniz...">
+                                        </div>
+                                        
+                                        <button type="submit" class="btn btn-primary waves-effect waves-light">Banner'ı Kaydet</button>
+                                    </form>
+                    
+                                </div> <!-- end card-body-->
+                     </div> <!-- end card-->
+            </div>
+        </div>
+       
+
+    </div> <!-- container-fluid -->
+</div>
+

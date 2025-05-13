@@ -45,7 +45,7 @@ namespace CarBook.WebApi.Controllers
             return Ok("Author information has been updated");
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAuthor(int id)
         {
             await _mediator.Send(new RemoveAuthorCommand(id));

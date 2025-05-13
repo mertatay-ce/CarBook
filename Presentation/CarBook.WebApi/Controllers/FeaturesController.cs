@@ -46,7 +46,7 @@ namespace CarBook.WebApi.Controllers
             return Ok("Feature has been updated");
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteFeature(int id)
         {
             await _mediator.Send(new RemoveFeatureCommand(id));

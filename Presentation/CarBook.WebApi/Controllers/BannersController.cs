@@ -54,7 +54,7 @@ namespace CarBook.WebApi.Controllers
             return Ok("Banner infomration updated.");
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteBanner(int id)
         {
             await _removeBannerCommandHandler.Handle(new RemoveBannerCommand(id));

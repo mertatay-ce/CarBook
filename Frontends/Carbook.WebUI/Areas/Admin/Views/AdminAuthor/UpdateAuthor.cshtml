@@ -1,0 +1,65 @@
+@model CarBook.Dto.AuthorDtos.UpdateAuthorDto
+@{
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="page-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="page-title-box d-flex align-items-center justify-content-between">
+                    <h4 class="mb-0 font-size-18">Yazar Bilgisi Güncelleme</h4>
+
+                    <div class="page-title-right">
+                        <ol class="breadcrumb m-0">
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">Paneller</a></li>
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">Yazar Alanı Yönetim Paneli</a></li>
+                            <li class="breadcrumb-item active">Yazar Bilgisi Güncelleme</li>
+                        </ol>
+                    </div>
+                                
+                </div>
+            </div>
+        </div>    
+        <div class="row">
+            <div class="col-xl-12">
+                 <div class="card">
+                     <div class="card-body">
+                    
+                                    <h4 class="card-title">Yazar Bilgisi Düzenleme</h4>
+                                    <p class="card-subtitle mb-4">Varolan yazar bilgisini güncellemek için aşağıdaki form üzerinden bilgileri girip <strong>"Yazar Bilgisini Güncelle"</strong> tuşuna basınız.</p>
+                                    
+                                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                        Görüntü URL girilirken mevcut formatın dosya yolu formatında olması gerekmektedir!
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <form method="post">
+                                        <input type="hidden" asp-for="AuthorId"/>
+                                        <div class="form-group">
+                                            <label for="Name">Yazar Adı ve Soyadı</label>
+                                            <input type="text" class="form-control" id="Name" asp-for="Name" placeholder="Yazarın adı ve soyadını giriniz...">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="Desc">Açıklama</label>
+                                            <input type="text" class="form-control" id="Desc" asp-for="Description" placeholder="Açıklama giriniz...">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="ImageUrl">Görüntü URL</label>
+                                            <input type="text" class="form-control" id="ImageUrl" asp-for="ImageUrl" placeholder="Görüntü URL'ini giriniz...">
+                                        </div>
+
+                                        
+                                        <button type="submit" class="btn btn-primary waves-effect waves-light">Yazar Bilgisini Kaydet</button>
+                                    </form>
+                    
+                                </div> <!-- end card-body-->
+                     </div> <!-- end card-->
+            </div>
+        </div>
+       
+
+    </div> <!-- container-fluid -->
+</div>
+
