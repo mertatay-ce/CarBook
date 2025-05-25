@@ -45,7 +45,7 @@ namespace CarBook.WebApi.Controllers
             return Ok("Testimonial information has been updated.");
         }
         
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> RemoveTestimonial(int id)
         {
             await _mediator.Send(new RemoveTestimonialCommand(id));

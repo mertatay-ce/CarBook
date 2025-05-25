@@ -1,0 +1,63 @@
+@model CarBook.Dto.SocialMediaDtos.CreateSocialMediaDto
+@{
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="page-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="page-title-box d-flex align-items-center justify-content-between">
+                    <h4 class="mb-0 font-size-18">Yeni Sosyal Medya Hesabı Ekleme</h4>
+
+                    <div class="page-title-right">
+                        <ol class="breadcrumb m-0">
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">Paneller</a></li>
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">Sosyal Medya Alanı Yönetim Paneli</a></li>
+                            <li class="breadcrumb-item active">Sosyal Medya Hesabı Ekle</li>
+                        </ol>
+                    </div>
+                                
+                </div>
+            </div>
+        </div>    
+        <div class="row">
+            <div class="col-xl-12">
+                 <div class="card">
+                     <div class="card-body">
+                    
+                                    <h4 class="card-title">Yeni Sosyal Medya Hesabı Girişi</h4>
+                                    <p class="card-subtitle mb-4">Yeni bir sosyal medya hesap bilgisi eklemek için aşağıdaki form üzerinden bilgileri girip <strong>"Sosyal Medya Hesabı Oluştur"</strong> tuşuna basınız.</p>
+                                    
+                                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                        Ikon URL girilirken mevcut formatın CSS Seçicisi veya URL formatında olması gerekmektedir!
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <form method="post">
+                                       
+                                        <div class="form-group">
+                                            <label for="SocialMediaName">Sosyal Medya Platformu</label>
+                                            <input type="text" class="form-control" id="SocialMediaName" asp-for="Name" placeholder="Platformun adını giriniz...">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="SocialMediaIcon">Sosyal Medya Platform İkonu</label>
+                                            <input type="text" class="form-control" id="SocialMediaIcon" asp-for="Icon" placeholder="CSS veya İkonu temsil eden bir URL giriniz...">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="SocialMediaUrl">Sosyal Medya Linki</label>
+                                            <input type="text" class="form-control" id="SocialMediaUrl" asp-for="Url" placeholder="İkon URL'ini giriniz...">
+                                        </div>
+                                       
+                                        <button type="submit" class="btn btn-primary waves-effect waves-light">Sosyal Medya Hesabı Oluştur</button>
+                                    </form>
+                    
+                                </div> <!-- end card-body-->
+                     </div> <!-- end card-->
+            </div>
+        </div>
+       
+
+    </div> <!-- container-fluid -->
+</div>

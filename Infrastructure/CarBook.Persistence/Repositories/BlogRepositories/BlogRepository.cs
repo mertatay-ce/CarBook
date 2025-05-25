@@ -22,7 +22,7 @@ public class BlogRepository : IBlogRepository
 
     public async Task<List<Blog>> GetAllBlogsWithAuthors()
     {
-        var blogs = await _context.Blogs.Include(x => x.Author).ToListAsync();
+        var blogs = await _context.Blogs.Include(x => x.Author).Include(x=> x.Category).ToListAsync();
         return blogs;
     }
 

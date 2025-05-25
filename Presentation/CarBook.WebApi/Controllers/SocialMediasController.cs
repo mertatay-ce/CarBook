@@ -45,7 +45,7 @@ namespace CarBook.WebApi.Controllers
             return Ok("Social media information has been updated");
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteSocialMedia(int id)
         {
             await _mediator.Send(new RemoveSocialMediaCommand(id));

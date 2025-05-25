@@ -45,7 +45,7 @@ namespace CarBook.WebApi.Controllers
             return Ok("Pricing information has been updated");
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> DeletePricing(int id)
         {
             await _mediator.Send(new RemovePricingCommand(id));

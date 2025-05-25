@@ -8,6 +8,7 @@ public class ResultGetAllBlogsWithAuthorsDto
     public string coverImageUrl { get; set; }
     public DateTime createdDate { get; set; }
     public int categoryId { get; set; }
+    public string categoryName { get; set; }
     public string authorName { get; set; }
     public string description { get; set; }
     public string AuthorDescription { get; set; }

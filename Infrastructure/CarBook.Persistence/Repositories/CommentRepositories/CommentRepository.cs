@@ -50,4 +50,9 @@ public class CommentRepository<T> : IGenericRepository<Comment>
         _context.Comments.Remove(value);
         _context.SaveChanges();
     }
+
+    public List<Comment> GetCommentsByBlogId(int id)
+    {
+      return _context.Set<Comment>().Where(x => x.BlogId == id).ToList();
+    }
 }

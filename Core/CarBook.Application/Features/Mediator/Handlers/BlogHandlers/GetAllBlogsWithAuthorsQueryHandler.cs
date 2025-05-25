@@ -23,6 +23,7 @@ public class GetAllBlogsWithAuthorsQueryHandler : IRequestHandler<GetAllBlogsWit
             AuthorName = x.Author.Name,
             BlogId = x.BlogId,
             CategoryId = x.CategoryId,
+            CategoryName = x.Category.Name,
             CoverImageUrl = x.CoverImageUrl,
             CreatedDate = x.CreatedDate,
             Title = x.Title,

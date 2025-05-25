@@ -45,7 +45,7 @@ namespace CarBook.WebApi.Controllers
             return Ok("Service information has been updated");
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteService(int id)
         {
             await _mediator.Send(new RemoveServiceCommand(id));

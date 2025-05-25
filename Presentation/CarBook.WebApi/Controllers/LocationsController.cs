@@ -45,11 +45,13 @@ namespace CarBook.WebApi.Controllers
             return Ok("Location information has been updated");
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteLocation(int id)
         {
             await _mediator.Send(new RemoveLocationCommand(id));
             return Ok("Location has been deleted");
         }
+        
+        
     }
 }

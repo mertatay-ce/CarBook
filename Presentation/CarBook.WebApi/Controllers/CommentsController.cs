@@ -51,5 +51,12 @@ namespace CarBook.WebApi.Controllers
             _repository.Update(comment);
             return Ok("Comment information has been updated.");
         }
+        
+        [HttpGet("BlogCommentsByBlogId")]
+        public IActionResult BlogCommentsByBlogId(int id)
+        {
+            var values = _repository.GetCommentsByBlogId(id);
+            return Ok(values);
+        }
     }
 }

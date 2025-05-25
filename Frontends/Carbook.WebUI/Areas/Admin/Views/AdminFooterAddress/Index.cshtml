@@ -1,0 +1,110 @@
+@model List<CarBook.Dto.FooterAddressDtos.ResultFooterAddressDto>
+
+@{
+    
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+
+<div class="page-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="page-title-box d-flex align-items-center justify-content-between">
+                    <h4 class="mb-0 font-size-18">Alt Alan (Footer) Yönetim Paneli</h4>
+
+                    <div class="page-title-right">
+                        <ol class="breadcrumb m-0">
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">Paneller</a></li>
+                            <li class="breadcrumb-item active">Alt Alan (Footer) Yönetim Paneli</li>
+                        </ol>
+                    </div>
+                                
+                </div>
+            </div>
+        </div>     
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Alt Alan (Footer) Alanı</h4>
+                        <p class="card-subtitle mb-4">
+                            Alt Alan (Footer) alanında bulunan bilgileri düzenlemek için bu panel üzerinden işlemler gerçekleştirebilirsiniz.
+                        </p>
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            Alt Alan (Footer) alanında yer alan bilgiler tek bir adet kayda ait verilerdir. Birden fazla kayıtta mevcutta alınan bilgilerin silinip yeniden eklenmesi veya varolan
+                            bilgilerin güncellenmesi için "İşlemler" satırında yer alan butonları kullanmanız önemle rica olunur  ve ana sayfada bilgiler
+                            görüntülenir ve fazla kayıtlar yüzünden tema bütünlüğü bozulmaktadır.
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            Harita bilgisi için Google Maps üzerinden bilgi alabilirsiniz.
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table mb-0">
+                                <thead>
+                                <tr>
+                                    <th>Açıklama</th>
+                                    <th>Adres</th>
+                                    <th>Telefon Numarası</th>
+                                    <th>Email Adresi</th>
+                                    <th>İşlemler</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @if (Model.Count == 0)
+                                {
+                                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                        Burada hiç alt alan (footer) bilgisi yok. Hadi bir tane eklemek için <strong>"Yeni Alt Alan (Footer) Bilgi Girişi"</strong> butonuna bas.
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                }
+                                else
+                                {
+                                    @foreach (var item in Model)
+                                    {
+                                        count++;
+                                        <tr>
+                                            <td>@item.description</td>
+                                            <td>@item.address</td>
+                                            <td>@item.phoneNumber</td>
+                                            <td>@item.email</td>
+                                            <td>
+                                                <a href="/Admin/AdminFooterAddress/RemoveFooterAddress/@item.footerAddressId" class="btn btn-outline-danger me-5">Sil</a>
+                                                <a href="/Admin/AdminFooterAddress/UpdateFooterAddress/@item.footerAddressId" class="btn btn-outline-warning me-5">Güncelle</a>
+                                                <a href="/Default/Index" class="btn btn-outline-primary me-5">Sitede Gör</a>
+                                                <a href="/Contact/Index" class="btn btn-outline-secondary me-5">İletişim Sayfasını Aç</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                               
+
+
+                                </tbody>
+                            </table>
+                            <a href="/Admin/AdminFooterAddress/CreateFooterAddress" class="btn btn-outline-primary mt-4">Yeni Alt Alan (Footer) Bilgi Girişi</a>
+                        </div>
+
+                    </div>
+                    <!-- end card-body-->
+                </div>
+                <!-- end card -->
+
+            </div>
+
+
+
+
+
+        </div>
+
+    </div> <!-- container-fluid -->
+</div>

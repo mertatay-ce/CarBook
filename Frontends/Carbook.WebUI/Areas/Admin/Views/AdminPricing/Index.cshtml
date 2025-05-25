@@ -1,0 +1,88 @@
+@model List<CarBook.Dto.PricingDtos.ResultPricingDto>
+
+@{
+    
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+   
+}
+
+<div class="page-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="page-title-box d-flex align-items-center justify-content-between">
+                    <h4 class="mb-0 font-size-18">Ödeme Türleri Yönetim Paneli</h4>
+
+                    <div class="page-title-right">
+                        <ol class="breadcrumb m-0">
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">Paneller</a></li>
+                            <li class="breadcrumb-item active">Ödeme Türleri Yönetim Paneli</li>
+                        </ol>
+                    </div>
+                                
+                </div>
+            </div>
+        </div>     
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Ödeme Türleri</h4>
+                        <p class="card-subtitle mb-4">
+                            Araç kiralamaya yönelik ödeme türleri ile alakalı işlemlerinizi bu panel üzerinden gerçekleştirebilirsiniz. Ödeme türleri saatlik, haftalık, aylık veya daha önceden belirlenmiş
+                            zaman periyotlarına göre ayarlanmalıdır. Uygun zaman periyodu için planlama biriminiz ile birlikte çalışabilirsiniz.
+                        </p>
+                        <div class="table-responsive">
+                            <table class="table mb-0">
+                                <thead>
+                                <tr>
+                                    <th>Ödeme Türü</th>
+                                    <th>İşlemler</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @if (Model.Count == 0)
+                                {
+                                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                        Burada hiç ödeme türü yok. Hadi bir tane eklemek için <strong>"Yeni Ödeme Türü Girişi"</strong> butonuna bas.
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                }
+                                else
+                                {
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>@item.Name</td>
+                                            <td>
+                                                <a href="/Admin/AdminPricing/RemovePricing/@item.PricingId" class="btn btn-outline-danger me-5">Sil</a>
+                                                <a href="/Admin/AdminPricing/UpdatePricing/@item.PricingId" class="btn btn-outline-warning me-5">Güncelle</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                               
+
+
+                                </tbody>
+                            </table>
+                            <a href="/Admin/AdminPricing/CreatePricing" class="btn btn-outline-primary mt-4">Yeni Ödeme Türü (Zaman Periyodu) Girişi</a>
+                        </div>
+
+                    </div>
+                    <!-- end card-body-->
+                </div>
+                <!-- end card -->
+
+            </div>
+
+
+
+
+
+        </div>
+
+    </div> <!-- container-fluid -->
+</div>

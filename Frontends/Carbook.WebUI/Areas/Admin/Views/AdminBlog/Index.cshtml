@@ -1,0 +1,100 @@
+@model List<CarBook.Dto.BlogDtos.ResultGetAllBlogsWithAuthorsDto>
+
+@{
+    
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+
+<div class="page-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="page-title-box d-flex align-items-center justify-content-between">
+                    <h4 class="mb-0 font-size-18">Blog Yönetim Paneli</h4>
+
+                    <div class="page-title-right">
+                        <ol class="breadcrumb m-0">
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">Paneller</a></li>
+                            <li class="breadcrumb-item active">Blog Yönetim Paneli</li>
+                        </ol>
+                    </div>
+                                
+                </div>
+            </div>
+        </div>     
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Blog Alanı</h4>
+                        <p class="card-subtitle mb-4">
+                            Bloglarla ilgili silme,güncelleme ve görüntülenme işlemlerini buradan gerçekleştirebilirsiniz. Yeni blog ekleme işlemi yazarlarımız 
+                            tarafından gerçekleştirilmektedir. Admin kullanıcıları blog ekleme işlemi yapamamaktadır. Sistemde "/Login/WriterLogin/" rotasına giderek 
+                            yazar girişimizden yazar olarak giriş yapılmalıdır. Her yazar kendi bloglarını düzenleme hakkına sahiptir. 
+                        </p>
+                        <div class="table-responsive">
+                            <table class="table mb-0">
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Blog Başlığı</th>
+                                    <th>Blog Açıklaması</th>
+                                    <th>Yazar</th>
+                                    <th>Oluşturulma Tarihi</th>
+                                    <th>Kategorisi</th>
+                                    <th>İşlemler</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @if (Model.Count == 0)
+                                {
+                                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                        Burada hiç blog yok. Hadi bir tane eklemek için <strong>"Yeni Blog Girişi"</strong> butonuna bas.
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                }
+                                else
+                                {
+                                    @foreach (var item in Model)
+                                    {
+                                        count++;
+                                        <tr>
+                                            <td>@count</td>
+                                            <td>@item.title</td>
+                                            <td>@item.description</td>
+                                            <td>@item.authorName</td>
+                                            <td>@item.createdDate</td>
+                                            <td>@item.categoryName</td>
+                                            <td>
+                                                <a href="/Admin/AdminBlog/RemoveBlog/@item.blogId" class="btn btn-outline-danger me-5">Kaldır</a>
+                                                <a href="/Blog/BlogDetail/@item.blogId" class="btn btn-outline-dark me-5">Bloğu Aç</a>
+                                                <a href="/Admin/AdminComment/Index/@item.blogId" class="btn btn-outline-dark me-5">Blog Yorumları</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                               
+
+
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                    <!-- end card-body-->
+                </div>
+                <!-- end card -->
+
+            </div>
+
+
+
+
+
+        </div>
+
+    </div> <!-- container-fluid -->
+</div>

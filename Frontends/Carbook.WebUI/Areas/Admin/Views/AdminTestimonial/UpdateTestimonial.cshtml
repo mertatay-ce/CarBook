@@ -1,0 +1,68 @@
+@model CarBook.Dto.TestimonialDtos.UpdateTestimonialDto
+@{
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="page-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="page-title-box d-flex align-items-center justify-content-between">
+                    <h4 class="mb-0 font-size-18">Referans Güncelleme</h4>
+
+                    <div class="page-title-right">
+                        <ol class="breadcrumb m-0">
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">Paneller</a></li>
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">Referanslar Alanı Yönetim Paneli</a></li>
+                            <li class="breadcrumb-item active">Referans Güncelleme</li>
+                        </ol>
+                    </div>
+                                
+                </div>
+            </div>
+        </div>    
+        <div class="row">
+            <div class="col-xl-12">
+                 <div class="card">
+                     <div class="card-body">
+                    
+                                    <h4 class="card-title">Referans Düzenleme</h4>
+                                    <p class="card-subtitle mb-4">Var olan referanslarınızın bilgilerini güncellemek için aşağıdaki form üzerinden bilgileri girip <strong>"Referansı Güncelle"</strong> tuşuna basınız.</p>
+                                    
+                                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                        Referans'a ait profil görüntü URL linki girilirken mevcut formatın CSS Seçicisi veya URL formatında olması gerekmektedir!
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <form method="post">
+                                       <input type="hidden" asp-for="testimonialId"/>
+                                        <div class="form-group">
+                                            <label for="TestimonialName">Referans Adı Soyadı</label>
+                                            <input type="text" class="form-control" id="TestimonialName" asp-for="name" placeholder="Referans adını ve soyadını giriniz...">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="TestimonialTitle">Referans Unvanı</label>
+                                            <input type="text" class="form-control" id="TestimonialTitle" asp-for="title" placeholder="Referans unvanını giriniz...">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="TestimonialComment">Referans Yorumu</label>
+                                            <textarea rows="5" class="form-control" id="TestimonialComment" asp-for="comment" placeholder="Referansın yorumunu giriniz."></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="TestimonialImage">Referans Profil Görüntü Linki</label>
+                                            <input type="text" class="form-control" id="TestimonialImage" asp-for="imageUrl" placeholder="Referans'a ait görüntü URL'ini giriniz...">
+                                        </div>
+                                   
+                                       
+                                        <button type="submit" class="btn btn-primary waves-effect waves-light">Referansı Güncelle</button>
+                                    </form>
+                    
+                                </div> <!-- end card-body-->
+                     </div> <!-- end card-->
+            </div>
+        </div>
+       
+
+    </div> <!-- container-fluid -->
+</div>

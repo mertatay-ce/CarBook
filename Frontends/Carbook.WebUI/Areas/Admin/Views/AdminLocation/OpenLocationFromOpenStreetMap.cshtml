@@ -1,0 +1,162 @@
+@using Newtonsoft.Json
+@model List<CarBook.Dto.LocationDtos.ResultNominatimDto>
+@{
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+
+    var json = JsonConvert.SerializeObject(Model[0].geojson);
+   
+}
+
+<div class="page-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="page-title-box d-flex align-items-center justify-content-between">
+                    <h4 class="mb-0 font-size-18">Konum Bilgisi Harita Gösterimi - OpenStreetMap</h4>
+
+                    <div class="page-title-right">
+                        <ol class="breadcrumb m-0">
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">Paneller</a></li>
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">Konum Ayarları Yönetim Paneli</a></li>
+                            <li class="breadcrumb-item active">Konum Bilgisi Harita Gösterimi - OpenStreetMap</li>
+                        </ol>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+
+                        <h4 class="card-title">Konum Bilgisi Harita Gösterimi - OpenStreetMap</h4>
+                        <p class="card-subtitle mb-4">Var olan bir konum bilgisi harita görünümüne aşağıdan ulaşabilirisiniz. OpenStreetMap aracılığıyla haritamızdan mevcut seçilen konumu inceleyebilirsiniz.</p>
+                        <div class="card shadow-sm mt-3">
+                            <div class="card-body">
+                                <h5 class="card-title">@Model[0].display_name</h5>
+                                <p class="card-text">
+                                    <strong>Ülke:</strong> @Model[0].address.country<br>
+                                    <strong>Koordinat:</strong> @Model[0].lat, @Model[0].lon
+                                </p>
+                                <p class="card-text"><small class="text-muted">@Model[0].display_name</small></p>
+                                <div id="site_map" style="height: 500px; margin-top: 15px; border-radius: 8px;"></div>
+                                <div class="row justify-content-between m-2">
+                                    <a href="/Admin/AdminLocation/Index/" class="btn btn-outline-primary mt-4">Geri Dön</a>
+                                    <p class="card-text text-muted"> Licenced By @Model[0].licence&#8482; </p>
+                                </div>
+                              
+                            </div>
+                        </div>
+
+
+
+                    </div> <!-- end card-body-->
+                </div> <!-- end card-->
+            </div>
+        </div>
+
+
+    </div> <!-- container-fluid -->
+</div>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const map = L.map('site_map');
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+   
+    const rawGeojsonData = @Html.Raw(json);
+    const boundingBox = [@Model[0].boundingbox[0], @Model[0].boundingbox[1], @Model[0].boundingbox[2], @Model[0].boundingbox[3]];
+
+    let geojsonFeature = null;
+
+   
+    if (rawGeojsonData && typeof rawGeojsonData === 'object') {
+      if (rawGeojsonData.type && (rawGeojsonData.type === 'Point' || rawGeojsonData.type === 'Polygon' || rawGeojsonData.type === 'MultiPolygon')) {
+        
+        geojsonFeature = {
+          "type": "Feature",
+          "geometry": rawGeojsonData,
+          "properties": {"name" : "@Html.Raw(Model[0].display_name)"} 
+        };
+      } else if (Array.isArray(rawGeojsonData) && rawGeojsonData.length > 0 && Array.isArray(rawGeojsonData[0])) {
+        
+        let geometryType = 'Polygon'; 
+        if (rawGeojsonData.length === 2 && typeof rawGeojsonData[0] === 'number') { 
+          geometryType = 'Point';
+        } else if (Array.isArray(rawGeojsonData[0]) && Array.isArray(rawGeojsonData[0][0]) && typeof rawGeojsonData[0][0][0] === 'number') {
+          geometryType = 'MultiPolygon';
+        } else if (Array.isArray(rawGeojsonData[0]) && typeof rawGeojsonData[0][0] === 'number') {
+           geometryType = 'Polygon'; 
+        }
+          
+        geojsonFeature = {
+          "type": "Feature",
+          "geometry": {
+            "type": geometryType,
+            "coordinates": rawGeojsonData
+          },
+          "properties": {"name" : "@Html.Raw(Model[0].display_name)"}
+        };
+      } else if (Array.isArray(rawGeojsonData) && rawGeojsonData.length === 2 && typeof rawGeojsonData[0] === 'number') {
+          geojsonFeature = {
+              "type": "Feature",
+              "geometry": {
+                  "type": "Point",
+                  "coordinates": rawGeojsonData
+              },
+              "properties": {"name" : "@Html.Raw(Model[0].display_name)"}
+          };
+      }
+    }
+
+    if (!geojsonFeature) {
+      console.error("Geçersiz veya tanınmayan GeoJSON formatı:", rawGeojsonData);
+      map.setView([(boundingBox[0] + boundingBox[1]) / 2, (boundingBox[2] + boundingBox[3]) / 2], 13);
+      return; 
+    }
+
+    
+    const geoJsonLayer = L.geoJSON(geojsonFeature, {
+      onEachFeature: function (feature, layer) {
+        if (feature.geometry.type === "Point") {
+          let popupContent = `<b>Konum:</b><br>Boylam: ${feature.geometry.coordinates[0]}<br>Enlem: ${feature.geometry.coordinates[1]}`;
+          if (feature.properties && feature.properties.name) {
+              popupContent += `<br>Ad: ${feature.properties.name}`;
+          }
+          layer.bindPopup(popupContent);
+        }
+      },
+      style: function (feature) {
+        // Tipine göre stil belirle
+        switch (feature.geometry.type) {
+          case 'Polygon':
+          case 'MultiPolygon':
+            return { color: "blue", weight: 2, fillOpacity: 0.1 };
+          case 'Point':
+            return { color: "red", fillOpacity: 0.8 };
+          default:
+            return {};
+        }
+      },
+      pointToLayer: function (feature, latlng) {
+        // Point'ler için standart işaretleyici kullanıyoruz
+        if (feature.geometry.type === "Point") {
+          return L.marker(latlng);
+        }
+        return undefined;
+      }
+    }).addTo(map);
+
+    // Haritayı GeoJSON sınırlarına göre zoomla
+    if (geoJsonLayer.getBounds().isValid()) {
+      map.fitBounds(geoJsonLayer.getBounds());
+    } else {
+      // Eğer GeoJSON verisi geçersizse veya yoksa, varsayılan bir görünüm ayarla
+      map.setView([(boundingBox[0] + boundingBox[1]) / 2, (boundingBox[2] + boundingBox[3]) / 2], 13);
+    }
+  });
+</script>

@@ -1,0 +1,63 @@
+@model CarBook.Dto.ServiceDtos.CreateServiceDto
+@{
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="page-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="page-title-box d-flex align-items-center justify-content-between">
+                    <h4 class="mb-0 font-size-18">Yeni Hizmet Bilgisi Ekleme</h4>
+
+                    <div class="page-title-right">
+                        <ol class="breadcrumb m-0">
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">Paneller</a></li>
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">Hizmetler Alanı Yönetim Paneli</a></li>
+                            <li class="breadcrumb-item active">Hizmet Bilgisi Ekle</li>
+                        </ol>
+                    </div>
+                                
+                </div>
+            </div>
+        </div>    
+        <div class="row">
+            <div class="col-xl-12">
+                 <div class="card">
+                     <div class="card-body">
+                    
+                                    <h4 class="card-title">Yeni Hizmet Bilgisi Girişi</h4>
+                                    <p class="card-subtitle mb-4">Yeni bir hzimet bilgisi eklemek için aşağıdaki form üzerinden bilgileri girip <strong>"Hizmet Oluştur"</strong> tuşuna basınız.</p>
+                                    
+                                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                        Ikon URL girilirken mevcut formatın CSS Seçicisi formatında olması gerekmektedir!
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <form method="post">
+                                       
+                                        <div class="form-group">
+                                            <label for="ServiceName">Hizmet Adı</label>
+                                            <input type="text" class="form-control" id="ServiceName" asp-for="title" placeholder="Hizmetin adını giriniz...">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="ServiceDesc">Hizmet Açıklaması</label>
+                                            <input type="text" class="form-control" id="ServiceDesc" asp-for="description" placeholder="Açıklama giriniz...">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="ServiceIconUrl">İkon URL</label>
+                                            <input type="text" class="form-control" id="ServiceIconUrl" asp-for="iconUrl" placeholder="İkon URL'ini giriniz...">
+                                        </div>
+                                       
+                                        <button type="submit" class="btn btn-primary waves-effect waves-light">Hizmet Oluştur</button>
+                                    </form>
+                    
+                                </div> <!-- end card-body-->
+                     </div> <!-- end card-->
+            </div>
+        </div>
+       
+
+    </div> <!-- container-fluid -->
+</div>
