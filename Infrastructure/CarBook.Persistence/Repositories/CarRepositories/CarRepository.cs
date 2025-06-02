@@ -26,5 +26,9 @@ public class CarRepository : ICarRepository
         return cars;
     }
 
-
+    public int CarCount()
+    {
+        var count = _context.Cars.Count();
+        return count;
+    }
 }
