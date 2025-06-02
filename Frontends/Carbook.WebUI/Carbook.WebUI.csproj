@@ -37,4 +37,8 @@
       <Folder Include="Pages\" />
     </ItemGroup>
 
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="Views\Shared\Components\_RentACarFilterComponentPartial\Default.cshtml" />
+    </ItemGroup>
+
 </Project>
